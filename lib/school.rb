@@ -8,14 +8,19 @@ class School
     end
 
     def add_student(student_name, grade)
-        roster[] = []
+        roster[grade] ||= []
         roster[grade] << student_name
     end
 
     def grade(grade)
-    
+        roster[grade]
+    end
 
+    def sort
+        hash = {}
+        roster.each do |grade, students|
+            hash[grade]  = students.sort
+        end
+        hash
+    end
 end
-
-# school = School.new("Bayside High School")
-# school.roster = {}
